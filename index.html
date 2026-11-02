@@ -49,7 +49,7 @@ button,input,select{font:inherit;color:inherit}
 .btn:hover{background:#34503f}
 .btn:active{background:#2b4434}
 /* ── инструменты каталога ──────────────────────────────────────────── */
-.cat .in{padding-block:56px 0}
+.cat .in{padding-block:56px 120px}
 .tools{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px 40px;
        align-items:end;margin-bottom:56px}
 .field{display:flex;flex-direction:column;gap:9px;min-width:0}
@@ -81,7 +81,7 @@ button,input,select{font:inherit;color:inherit}
 .good{display:block;text-decoration:none;padding:10px;margin:-10px;transition:background .15s}
 .good:hover,.good:focus-visible{background:var(--step)}
 .good__ph{background:var(--step)}
-.good__ph img{width:100%;aspect-ratio:1;object-fit:cover}
+.good__ph img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
 /* снимок, который Авито само растянуло: показываем в настоящем размере */
 .good__ph.small,.gal__main.small{aspect-ratio:1;display:flex;align-items:center;
                                  justify-content:center}
@@ -131,7 +131,7 @@ button,input,select{font:inherit;color:inherit}
 .dcols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:56px;align-items:start}
 .gal{display:flex;flex-direction:column;gap:12px}
 .gal__main{background:var(--step)}
-.gal__main img{width:100%;aspect-ratio:1;object-fit:cover}
+.gal__main img{width:100%;height:auto;aspect-ratio:1;object-fit:cover}
 .gal__row{display:flex;gap:12px}
 .gal__t{width:88px;height:88px;padding:0;border:0;background:var(--step);cursor:pointer;
         opacity:.55;transition:opacity .15s}
@@ -154,7 +154,7 @@ button,input,select{font:inherit;color:inherit}
 
 @media (max-width:1080px){
   .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .cat .in{padding-block:48px 0}
+  .cat .in{padding-block:40px 96px}
   .dcols{grid-template-columns:1fr;gap:32px}
 }
 @media (max-width:700px){
@@ -162,13 +162,16 @@ button,input,select{font:inherit;color:inherit}
   .bar .in{gap:14px;min-height:56px;padding-block:12px}
   .bar__city{margin-right:0}
   .bar__act{width:100%;order:3}
-  .marks-row{gap:10px 16px}
+  .marks-row{gap:10px 16px;margin-bottom:22px}
   .mark{white-space:nowrap}
   .lead{font-size:18px;margin-bottom:28px}
   .btn{display:block;text-align:center}
-  .cat .in{padding-block:36px 0}
-  .tools{grid-template-columns:1fr;gap:24px;margin-bottom:36px}
+  .cat .in{padding-block:28px 72px}
+  .tools{grid-template-columns:1fr;gap:18px;margin-bottom:20px}
   .fit{max-width:none}
+  .cat__h{gap:8px 14px;margin-bottom:22px}
+  .cat__h h1{font-size:36px}
+  .cat__h p{font-size:16px}
   .grid{grid-template-columns:1fr;row-gap:64px}
   .note.wide{grid-template-columns:1fr;gap:16px}
   /* на телефоне фотография идёт от края до края, текст остаётся в полях */
@@ -231,7 +234,7 @@ button,input,select{font:inherit;color:inherit}
   <div class="grid" id="grid">
     <a class="good rise" href="https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/cos_bryuki_iz_shersti_4753652983" data-id="4753652983"
    data-br="Cos" data-fg="0" data-fp="41" data-text="cos брюки из шерсти cos. брюки из шерсти. маркировка размера 42eur (170/80). cos">
-  <div class="good__ph"><img src="img/4753652983_1.jpg" alt="Cos брюки из шерсти" loading="lazy"
+  <div class="good__ph"><img src="img/4753652983_1.jpg" alt="Cos брюки из шерсти"
        width="864" height="864"></div>
   <p class="good__fit" hidden></p>
   <p class="good__n">Cos брюки из шерсти</p>
@@ -240,7 +243,7 @@ button,input,select{font:inherit;color:inherit}
   <p class="good__d">Cos. Брюки из шерсти. Маркировка размера 42eur (170/80).</p>
 </a><a class="good rise" href="https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/dzhinsy_cos_7345377443" data-id="7345377443"
    data-br="Cos" data-fg="0" data-fp="42" data-text="джинсы cos cos. джинсы c широкими подворотами. 100% хлопок. маркировка размера 27. cos">
-  <div class="good__ph"><img src="img/7345377443_1.jpg" alt="Джинсы Cos" loading="lazy"
+  <div class="good__ph"><img src="img/7345377443_1.jpg" alt="Джинсы Cos"
        width="864" height="864"></div>
   <p class="good__fit" hidden></p>
   <p class="good__n">Джинсы Cos</p>
@@ -249,7 +252,7 @@ button,input,select{font:inherit;color:inherit}
   <p class="good__d">Cos. Джинсы c широкими подворотами. 100% хлопок. Маркировка размера 27.</p>
 </a><a class="good rise" href="https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/rubashka_ganni_3826551086" data-id="3826551086"
    data-br="Ganni" data-fg="47" data-fp="0" data-text="рубашка ganni ganni. рубашка без рукавов топ. боковая бирка с размером и составом отсутствует. по информации с сайта — 100% хлопок. подойдёт на 42-44 размер. ganni">
-  <div class="good__ph"><img src="img/3826551086_1.jpg" alt="Рубашка Ganni" loading="lazy"
+  <div class="good__ph"><img src="img/3826551086_1.jpg" alt="Рубашка Ganni"
        width="864" height="864"></div>
   <p class="good__fit" hidden></p>
   <p class="good__n">Рубашка Ganni</p>
@@ -258,7 +261,7 @@ button,input,select{font:inherit;color:inherit}
   <p class="good__d">Ganni. Рубашка без рукавов топ. Боковая бирка с размером и составом отсутствует. По информации с сайта — 100% хлопок. Подойдёт на 42-44 размер.</p>
 </a><a class="good rise" href="https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/arket_plate_sarafan_7889240937" data-id="7889240937"
    data-br="Arket" data-fg="46" data-fp="0" data-text="arket платье сарафан arket. невесомое воздушное длинное (макси)платье сарафан из тонкого шелковистого материала без подкладки (просвечивает). материал 51% купро + 49% вискоза. маркировка размера 38eur(165/88). arket">
-  <div class="good__ph"><img src="img/7889240937_1.jpg" alt="Arket платье сарафан" loading="lazy"
+  <div class="good__ph"><img src="img/7889240937_1.jpg" alt="Arket платье сарафан"
        width="864" height="864"></div>
   <p class="good__fit" hidden></p>
   <p class="good__n">Arket платье сарафан</p>
@@ -267,7 +270,7 @@ button,input,select{font:inherit;color:inherit}
   <p class="good__d">Arket. Невесомое воздушное длинное (макси)платье сарафан из тонкого шелковистого материала без подкладки (просвечивает). Материал 51% купро + 49% вискоза. Маркировка размера 38eur(165/88).</p>
 </a><a class="good rise" href="https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/rubashka_ganni_2642229647" data-id="2642229647"
    data-br="Ganni" data-fg="48" data-fp="0" data-text="рубашка ganni ganni. белая рубашка из 100% плотного хрустящего хлопка. нежный мелкий цветочный принт. красивый фигурный край вдоль застежки и манжетов. ganni">
-  <div class="good__ph"><img src="img/2642229647_1.jpg" alt="Рубашка Ganni" loading="lazy"
+  <div class="good__ph"><img src="img/2642229647_1.jpg" alt="Рубашка Ganni"
        width="864" height="864"></div>
   <p class="good__fit" hidden></p>
   <p class="good__n">Рубашка Ganni</p>
@@ -276,7 +279,7 @@ button,input,select{font:inherit;color:inherit}
   <p class="good__d">Ganni. Белая рубашка из 100% плотного хрустящего хлопка. Нежный мелкий цветочный принт. Красивый фигурный край вдоль застежки и манжетов.</p>
 </a><a class="good rise" href="https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/plate_arket_7313164059" data-id="7313164059"
    data-br="Arket" data-fg="46" data-fp="44" data-text="платье arket arket. платье из вискозы атласной фактуры. маркировка размера 38eur (165/88). arket">
-  <div class="good__ph"><img src="img/7313164059_1.jpg" alt="Платье Arket" loading="lazy"
+  <div class="good__ph"><img src="img/7313164059_1.jpg" alt="Платье Arket"
        width="864" height="864"></div>
   <p class="good__fit" hidden></p>
   <p class="good__n">Платье Arket</p>
