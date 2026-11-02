@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>НЕ КОМПАНИЯ — брендовая одежда и сток, Санкт-Петербург</title>
+<meta name="description" content="Брендовая одежда, бывшая в употреблении, и сток из Санкт-Петербурга. В каждом описании — замеры по сантиметрам и честно о состоянии.">
+<!-- демо: в поиск её пускать незачем, фотографии чужие -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%231E2522'/%3E%3Crect x='7' y='9' width='18' height='3' fill='%23E4E2DC'/%3E%3Crect x='7' y='15' width='18' height='3' fill='%23E4E2DC'/%3E%3Crect x='7' y='21' width='11' height='3' fill='%233F5D4B'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Golos+Text:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#EAE7E4;      /* стена продавца */
+  --ink:#1E2522;         /* чернила, шапка и подвал */
+  --on-ink:#E4E2DC;
+  --accent:#3F5D4B;
+  --on-accent:#F2F1EC;
+  --step:#E0DCD5;        /* шаг тона: наведение и вторая секция */
+  --muted:#5B584F;
+  --display:"Cormorant Garamond",Georgia,serif;
+  --body:"Golos Text","Helvetica Neue",Arial,sans-serif;
+  --pad:32px;
+  --max:1392px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);
+     font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.in{max-width:var(--max);margin:0 auto;padding-inline:var(--pad)}
+
+/* ── шапка: сплошная плашка цвета чернил ───────────────────────────── */
+.bar{background:var(--ink);color:var(--on-ink)}
+.bar .in{display:flex;align-items:center;gap:24px;min-height:64px;flex-wrap:wrap}
+.logo{font-weight:500;font-size:18px;text-decoration:none;white-space:nowrap}
+.bar__city{font-size:16px;color:#A9A79F;margin-right:auto}
+.bar__act{font-size:16px;color:var(--on-ink);white-space:nowrap}
+.bar__act:hover{text-decoration:underline}
+
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);
+     text-decoration:none;padding:15px 30px;font-weight:500;transition:background .15s}
+.btn:hover{background:#34503f}
+.btn:active{background:#2b4434}
+/* ── инструменты каталога ──────────────────────────────────────────── */
+.cat .in{padding-block:56px 0}
+.tools{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px 40px;
+       align-items:end;margin-bottom:56px}
+.field{display:flex;flex-direction:column;gap:9px;min-width:0}
+.field label{font-size:16px;color:var(--muted)}
+.field__note{font-size:16px;color:var(--muted);margin:8px 0 0}
+.fitrow{display:flex;gap:10px;align-items:flex-end}
+.fitrow .field{flex:1}
+.switch{display:flex;gap:2px;flex-shrink:0}
+.switch button{background:var(--step);border:0;padding:0 16px;height:44px;cursor:pointer}
+.switch button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);font-weight:500}
+.field input{background:transparent;border:0;border-bottom:2px solid var(--ink);
+             padding:7px 0;font-size:20px;width:100%;border-radius:0}
+.field input::placeholder{color:#8C8A82}
+.field input:focus{outline:0;border-bottom-color:var(--accent)}
+.fit{max-width:260px}
+.marks-row{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:40px}
+.mark{background:none;border:0;padding:4px 0;font-size:16px;cursor:pointer;color:var(--muted)}
+.mark:hover{color:var(--ink)}
+.mark[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);
+                           font-weight:500;padding:6px 14px;margin:-6px 0}
+
+/* ── сетка каталога: товары лежат прямо на фоне, без карточек ──────── */
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+      column-gap:24px;row-gap:56px}
+.cat__h{display:flex;align-items:baseline;gap:12px 28px;flex-wrap:wrap;margin:0 0 48px}
+.cat__h h1{font-family:var(--display);font-weight:600;font-size:clamp(44px,7vw,96px);
+           line-height:.95;letter-spacing:-.02em;margin:0}
+.cat__h p{margin:0;font-size:20px;color:var(--muted);font-variant-numeric:tabular-nums}
+.good{display:block;text-decoration:none;padding:10px;margin:-10px;transition:background .15s}
+.good:hover,.good:focus-visible{background:var(--step)}
+.good__ph{background:var(--step)}
+.good__ph img{width:100%;aspect-ratio:1;object-fit:cover}
+/* снимок, который Авито само растянуло: показываем в настоящем размере */
+.good__ph.small,.gal__main.small{aspect-ratio:1;display:flex;align-items:center;
+                                 justify-content:center}
+.good__ph.small img{width:64%;height:auto;aspect-ratio:auto}
+.gal__main.small img{width:100%;height:auto;aspect-ratio:auto}
+.good__n{font-size:20px;font-weight:500;margin:16px 0 0;line-height:1.3}
+.good:hover .good__n{text-decoration:underline}
+.good__p{font-size:20px;font-weight:500;margin:4px 0 0;font-variant-numeric:tabular-nums}
+.good__m{margin:12px 0 0;font-weight:500;font-variant-numeric:tabular-nums;
+         line-height:1.5}
+.good__d{margin:8px 0 0;line-height:1.5;display:-webkit-box;-webkit-line-clamp:3;
+         -webkit-box-orient:vertical;overflow:hidden}
+.good__fit{margin:12px 0 8px;color:var(--accent);font-weight:600;
+           font-variant-numeric:tabular-nums;line-height:28px}
+.good__fit.exact{background:var(--accent);color:var(--on-accent);
+                 display:inline-block;padding:0 10px}
+/* вещи, у которых такой мерки нет, уходят вниз и гаснут */
+.good.dim .good__ph,.good.dim .good__n{opacity:.6}
+.good.dim .good__fit{color:var(--muted);font-weight:400}
+.note{align-self:start;order:999}
+/* когда ряды сходятся ровно, блок идёт во всю ширину: заголовок слева, текст справа */
+.note.wide{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);
+           gap:24px 56px;align-items:start;margin-top:16px}
+.note.wide h2{margin:0}
+.note.wide p:last-of-type{margin-bottom:0}
+.note h2{font-family:var(--display);font-weight:600;font-size:clamp(22px,2.6vw,30px);
+         line-height:1.05;margin:0 0 12px}
+.note p{margin:0 0 12px;color:var(--muted)}
+.note a{color:var(--accent)}
+.empty{grid-column:1/-1;padding:40px 0;order:1000}
+.empty h2{font-family:var(--display);font-weight:600;font-size:38px;margin:0 0 10px}
+.empty p{margin:0 0 18px;color:var(--muted);max-width:52ch}
+
+/* ── подвал ────────────────────────────────────────────────────────── */
+.foot{background:var(--ink);color:var(--on-ink)}
+.foot .in{padding-block:72px 80px}
+.foot__name{font-family:var(--display);font-weight:600;font-size:clamp(40px,8vw,104px);
+            line-height:.9;margin:0 0 36px;letter-spacing:-.02em;color:var(--on-ink)}
+.foot p{margin:0 0 8px;color:#A9A79F;max-width:60ch}
+.foot a{color:var(--on-ink)}
+
+/* ── карточка товара ───────────────────────────────────────────────── */
+.det .in{padding-block:40px 120px}
+.back{background:none;border:0;padding:12px 0;margin-bottom:28px;cursor:pointer;
+      color:var(--ink);font-size:16px}
+.back:hover{color:var(--ink)}
+.dcols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:56px;align-items:start}
+.gal{display:flex;flex-direction:column;gap:12px}
+.gal__main{background:var(--step)}
+.gal__main img{width:100%;aspect-ratio:1;object-fit:cover}
+.gal__row{display:flex;gap:12px}
+.gal__t{width:88px;height:88px;padding:0;border:0;background:var(--step);cursor:pointer;
+        opacity:.55;transition:opacity .15s}
+.gal__t[aria-pressed="true"],.gal__t:hover{opacity:1}
+.gal__t img{width:100%;height:100%;object-fit:cover}
+.dh{font-family:var(--display);font-weight:600;font-size:clamp(30px,4.4vw,52px);
+    line-height:1.02;margin:0 0 16px}
+.dp{font-size:28px;font-weight:500;margin:0 0 32px;font-variant-numeric:tabular-nums}
+.dsec{margin-bottom:32px}
+.dsec h3{font-family:var(--display);font-weight:600;font-size:26px;margin:0 0 12px}
+.dm{margin:0;font-variant-numeric:tabular-nums;line-height:1.7}
+.dtext{margin:0;line-height:1.6}
+.hint{font-size:14px;color:var(--muted);margin:12px 0 0;max-width:46ch}
+.orig{margin:32px 0 0;color:var(--muted)}
+.orig a{color:var(--accent)}
+
+/* ── появление при прокрутке ───────────────────────────────────────── */
+.rise{opacity:0;transform:translateY(22px)}
+.rise.seen{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease}
+
+@media (max-width:1080px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .cat .in{padding-block:48px 0}
+  .dcols{grid-template-columns:1fr;gap:32px}
+}
+@media (max-width:700px){
+  :root{--pad:20px}
+  .bar .in{gap:14px;min-height:56px;padding-block:12px}
+  .bar__city{margin-right:0}
+  .bar__act{width:100%;order:3}
+  .marks-row{gap:10px 16px}
+  .mark{white-space:nowrap}
+  .lead{font-size:18px;margin-bottom:28px}
+  .btn{display:block;text-align:center}
+  .cat .in{padding-block:36px 0}
+  .tools{grid-template-columns:1fr;gap:24px;margin-bottom:36px}
+  .fit{max-width:none}
+  .grid{grid-template-columns:1fr;row-gap:64px}
+  .note.wide{grid-template-columns:1fr;gap:16px}
+  /* на телефоне фотография идёт от края до края, текст остаётся в полях */
+  .good{padding:0;margin:0}
+  .good:hover,.good:focus-visible{background:none}
+  .good__ph{margin-inline:calc(var(--pad) * -1)}
+  .foot .in{padding-block:56px 64px}
+  .gal__t{width:70px;height:70px}
+  .det .in{padding-block:28px 88px}
+}
+/* на узком телефоне город выталкивал ссылку на вторую строку */
+@media (max-width:480px){
+  .bar__city{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rise{opacity:1;transform:none}
+  *{transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="in">
+  <a class="logo" href="#cat">НЕ КОМПАНИЯ</a>
+  <span class="bar__city">Санкт-Петербург</span>
+  <a class="bar__act" href="https://www.avito.ru/brands/i1757652/all/lichnye_veschi?sellerId=7f1b30075a9bfbc7bf299c4f559bb36c" target="_blank" rel="noopener">Написать</a>
+</div></header>
+
+<section class="cat" id="cat"><div class="in">
+  <div class="tools">
+    <div class="field">
+      <label for="q">Поиск</label>
+      <input id="q" type="search" placeholder="Бренд или вещь">
+    </div>
+    <div>
+      <div class="fitrow">
+        <div class="field fit">
+          <label for="fit">Ваш замер, см</label>
+          <input id="fit" type="number" inputmode="numeric" min="20" max="90" placeholder="46">
+        </div>
+        <div class="switch" role="group" aria-label="По какому замеру подбирать">
+          <button type="button" data-m="fg" aria-pressed="true">Грудь</button>
+          <button type="button" data-m="fp" aria-pressed="false">Пояс</button>
+        </div>
+      </div>
+      <p class="field__note" id="fitnote">Половина обхвата, как меряет продавец</p>
+    </div>
+  </div>
+  <div class="marks-row">
+    <button class="mark" type="button" data-br="Cos" aria-pressed="false">Cos</button><button class="mark" type="button" data-br="Ganni" aria-pressed="false">Ganni</button><button class="mark" type="button" data-br="Arket" aria-pressed="false">Arket</button>
+    <button class="mark reset" type="button">Показать все</button>
+  </div>
+
+  <div class="cat__h">
+    <h1 class="rise">Что есть сейчас</h1>
+    <p>6 вещей из 825</p>
+  </div>
+
+  <div class="grid" id="grid">
+    <a class="good rise" href="https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/cos_bryuki_iz_shersti_4753652983" data-id="4753652983"
+   data-br="Cos" data-fg="0" data-fp="41" data-text="cos брюки из шерсти cos. брюки из шерсти. маркировка размера 42eur (170/80). cos">
+  <div class="good__ph"><img src="img/4753652983_1.jpg" alt="Cos брюки из шерсти" loading="lazy"
+       width="864" height="864"></div>
+  <p class="good__fit" hidden></p>
+  <p class="good__n">Cos брюки из шерсти</p>
+  <p class="good__p">7 777 ₽</p>
+  <p class="good__m">Пояс&nbsp;41 · Бёдра&nbsp;57 · Длина&nbsp;112</p>
+  <p class="good__d">Cos. Брюки из шерсти. Маркировка размера 42eur (170/80).</p>
+</a><a class="good rise" href="https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/dzhinsy_cos_7345377443" data-id="7345377443"
+   data-br="Cos" data-fg="0" data-fp="42" data-text="джинсы cos cos. джинсы c широкими подворотами. 100% хлопок. маркировка размера 27. cos">
+  <div class="good__ph"><img src="img/7345377443_1.jpg" alt="Джинсы Cos" loading="lazy"
+       width="864" height="864"></div>
+  <p class="good__fit" hidden></p>
+  <p class="good__n">Джинсы Cos</p>
+  <p class="good__p">7 600 ₽</p>
+  <p class="good__m">Пояс&nbsp;42 · Бёдра&nbsp;55 · Длина&nbsp;96 · Шаговый&nbsp;66</p>
+  <p class="good__d">Cos. Джинсы c широкими подворотами. 100% хлопок. Маркировка размера 27.</p>
+</a><a class="good rise" href="https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/rubashka_ganni_3826551086" data-id="3826551086"
+   data-br="Ganni" data-fg="47" data-fp="0" data-text="рубашка ganni ganni. рубашка без рукавов топ. боковая бирка с размером и составом отсутствует. по информации с сайта — 100% хлопок. подойдёт на 42-44 размер. ganni">
+  <div class="good__ph"><img src="img/3826551086_1.jpg" alt="Рубашка Ganni" loading="lazy"
+       width="864" height="864"></div>
+  <p class="good__fit" hidden></p>
+  <p class="good__n">Рубашка Ganni</p>
+  <p class="good__p">5 000 ₽</p>
+  <p class="good__m">Грудь&nbsp;47 · Длина&nbsp;64</p>
+  <p class="good__d">Ganni. Рубашка без рукавов топ. Боковая бирка с размером и составом отсутствует. По информации с сайта — 100% хлопок. Подойдёт на 42-44 размер.</p>
+</a><a class="good rise" href="https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/arket_plate_sarafan_7889240937" data-id="7889240937"
+   data-br="Arket" data-fg="46" data-fp="0" data-text="arket платье сарафан arket. невесомое воздушное длинное (макси)платье сарафан из тонкого шелковистого материала без подкладки (просвечивает). материал 51% купро + 49% вискоза. маркировка размера 38eur(165/88). arket">
+  <div class="good__ph"><img src="img/7889240937_1.jpg" alt="Arket платье сарафан" loading="lazy"
+       width="864" height="864"></div>
+  <p class="good__fit" hidden></p>
+  <p class="good__n">Arket платье сарафан</p>
+  <p class="good__p">4 555 ₽</p>
+  <p class="good__m">Грудь&nbsp;46 · Длина&nbsp;136</p>
+  <p class="good__d">Arket. Невесомое воздушное длинное (макси)платье сарафан из тонкого шелковистого материала без подкладки (просвечивает). Материал 51% купро + 49% вискоза. Маркировка размера 38eur(165/88).</p>
+</a><a class="good rise" href="https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/rubashka_ganni_2642229647" data-id="2642229647"
+   data-br="Ganni" data-fg="48" data-fp="0" data-text="рубашка ganni ganni. белая рубашка из 100% плотного хрустящего хлопка. нежный мелкий цветочный принт. красивый фигурный край вдоль застежки и манжетов. ganni">
+  <div class="good__ph"><img src="img/2642229647_1.jpg" alt="Рубашка Ganni" loading="lazy"
+       width="864" height="864"></div>
+  <p class="good__fit" hidden></p>
+  <p class="good__n">Рубашка Ganni</p>
+  <p class="good__p">4 000 ₽</p>
+  <p class="good__m">Плечи&nbsp;36 · Грудь&nbsp;48 · Рукав&nbsp;60 · Длина&nbsp;71</p>
+  <p class="good__d">Ganni. Белая рубашка из 100% плотного хрустящего хлопка. Нежный мелкий цветочный принт. Красивый фигурный край вдоль застежки и манжетов.</p>
+</a><a class="good rise" href="https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/plate_arket_7313164059" data-id="7313164059"
+   data-br="Arket" data-fg="46" data-fp="44" data-text="платье arket arket. платье из вискозы атласной фактуры. маркировка размера 38eur (165/88). arket">
+  <div class="good__ph"><img src="img/7313164059_1.jpg" alt="Платье Arket" loading="lazy"
+       width="864" height="864"></div>
+  <p class="good__fit" hidden></p>
+  <p class="good__n">Платье Arket</p>
+  <p class="good__p">3 145 ₽</p>
+  <p class="good__m">Грудь&nbsp;46 · Пояс&nbsp;44 · Бёдра&nbsp;52 · Длина&nbsp;132</p>
+  <p class="good__d">Arket. Платье из вискозы атласной фактуры. Маркировка размера 38eur (165/88).</p>
+</a>
+    <div class="note rise wide">
+      <h2>Это демонстрационная витрина</h2>
+      <p>Собрана по объявлениям на Авито. Здесь 6 вещей,
+         а в профиле продавца их 825.</p>
+    </div>
+    <div class="empty" id="empty" hidden>
+      <h2>Ничего не нашлось</h2>
+      <p>Попробуйте другое слово или название бренда. В демо только 6 вещей
+         из 825, остальные в профиле на Авито.</p>
+      <button class="btn reset" type="button">Сбросить поиск</button>
+    </div>
+  </div>
+</div></section>
+
+<section class="det" id="det" hidden><div class="in">
+  <button class="back" id="back" type="button">← Назад в каталог</button>
+  <div class="dcols">
+    <div class="gal">
+      <div class="gal__main"><img id="dmain" src="" alt="" width="864" height="864"></div>
+      <div class="gal__row" id="drow"></div>
+    </div>
+    <div>
+      <h2 class="dh" id="dh"></h2>
+      <p class="dp" id="dp"></p>
+      <a class="btn" href="https://www.avito.ru/brands/i1757652/all/lichnye_veschi?sellerId=7f1b30075a9bfbc7bf299c4f559bb36c" target="_blank" rel="noopener">Написать продавцу</a>
+      <p class="hint">Это демо: кнопка ведёт в профиль на Авито.
+         В рабочей версии она откроет переписку с магазином в мессенджере.</p>
+      <div class="dsec" id="dmwrap" style="margin-top:32px">
+        <h3>Замеры</h3>
+        <p class="dm" id="dm"></p>
+      </div>
+      <div class="dsec">
+        <h3>Описание</h3>
+        <p class="dtext" id="dtext"></p>
+      </div>
+      <p class="orig">Объявление целиком:
+         <a id="dorig" href="#" target="_blank" rel="noopener">открыть на Авито</a></p>
+    </div>
+  </div>
+</div></section>
+
+<footer class="foot"><div class="in">
+  <p class="foot__name">НЕ КОМПАНИЯ</p>
+  <p>Демонстрационная витрина, собрана по объявлениям «НЕ КОМПАНИЯ» на Авито.
+     Показаны 6 вещей из 825.</p>
+  <p><a href="https://www.avito.ru/brands/i1757652/all/lichnye_veschi?sellerId=7f1b30075a9bfbc7bf299c4f559bb36c" target="_blank" rel="noopener">Профиль продавца на Авито</a></p>
+</div></footer>
+
+<script>
+const G = [{"id": 4753652983, "n": "Cos брюки из шерсти", "p": 7777, "d": "Cos. Брюки из шерсти. Маркировка размера 42eur (170/80).", "m": [["Пояс", 41], ["Бёдра", 57], ["Длина", 112]], "br": "Cos", "u": "https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/cos_bryuki_iz_shersti_4753652983", "ph": ["img/4753652983_1.jpg", "img/4753652983_2.jpg"], "small": false, "px": [864, 864], "fg": 0, "fp": 41}, {"id": 7345377443, "n": "Джинсы Cos", "p": 7600, "d": "Cos. Джинсы c широкими подворотами. 100% хлопок. Маркировка размера 27.", "m": [["Пояс", 42], ["Бёдра", 55], ["Длина", 96], ["Шаговый", 66]], "br": "Cos", "u": "https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/dzhinsy_cos_7345377443", "ph": ["img/7345377443_1.jpg", "img/7345377443_2.jpg"], "small": false, "px": [864, 864], "fg": 0, "fp": 42}, {"id": 3826551086, "n": "Рубашка Ganni", "p": 5000, "d": "Ganni. Рубашка без рукавов топ. Боковая бирка с размером и составом отсутствует. По информации с сайта — 100% хлопок. Подойдёт на 42-44 размер.", "m": [["Грудь", 47], ["Длина", 64]], "br": "Ganni", "u": "https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/rubashka_ganni_3826551086", "ph": ["img/3826551086_1.jpg", "img/3826551086_2.jpg"], "small": false, "px": [864, 864], "fg": 47, "fp": 0}, {"id": 7889240937, "n": "Arket платье сарафан", "p": 4555, "d": "Arket. Невесомое воздушное длинное (макси)платье сарафан из тонкого шелковистого материала без подкладки (просвечивает). Материал 51% купро + 49% вискоза. Маркировка размера 38eur(165/88).", "m": [["Грудь", 46], ["Длина", 136]], "br": "Arket", "u": "https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/arket_plate_sarafan_7889240937", "ph": ["img/7889240937_1.jpg", "img/7889240937_2.jpg"], "small": false, "px": [576, 216], "fg": 46, "fp": 0}, {"id": 2642229647, "n": "Рубашка Ganni", "p": 4000, "d": "Ganni. Белая рубашка из 100% плотного хрустящего хлопка. Нежный мелкий цветочный принт. Красивый фигурный край вдоль застежки и манжетов.", "m": [["Плечи", 36], ["Грудь", 48], ["Рукав", 60], ["Длина", 71]], "br": "Ganni", "u": "https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/rubashka_ganni_2642229647", "ph": ["img/2642229647_1.jpg", "img/2642229647_2.jpg"], "small": false, "px": [864, 864], "fg": 48, "fp": 0}, {"id": 7313164059, "n": "Платье Arket", "p": 3145, "d": "Arket. Платье из вискозы атласной фактуры. Маркировка размера 38eur (165/88).", "m": [["Грудь", 46], ["Пояс", 44], ["Бёдра", 52], ["Длина", 132]], "br": "Arket", "u": "https://www.avito.ru/sankt-peterburg/odezhda_obuv_aksessuary/plate_arket_7313164059", "ph": ["img/7313164059_1.jpg", "img/7313164059_2.jpg"], "small": false, "px": [864, 493], "fg": 46, "fp": 44}];
+const ПУСТО = document.getElementById("empty");
+const сетка = document.getElementById("grid");
+const карточки = [...document.querySelectorAll(".good")];
+const поиск = document.getElementById("q");
+const подбор = document.getElementById("fit");
+const каталог = document.getElementById("cat");
+const деталь = document.getElementById("det");
+const заметка = document.getElementById("fitnote");
+let бренд = "", мерка = "fg";
+
+const деньги = n => n == null ? "цена по запросу"
+  : String(n).replace(/\B(?=(\d{3})+(?!\d))/g, "\u00a0") + "\u00a0\u20bd";
+
+function показать(){
+  const слово = поиск.value.trim().toLowerCase();
+  const мой = parseInt(подбор.value, 10);
+  let видно = 0;
+  карточки.forEach(к => {
+    const ок = (!бренд || к.dataset.br === бренд)
+            && (!слово || к.dataset.text.includes(слово));
+    к.hidden = !ок;
+    if (ок) видно++;
+    const строка = к.querySelector(".good__fit");
+    const обмер = +к.dataset[мерка];
+    строка.classList.remove("exact");
+    к.classList.remove("dim");
+    if (!мой) { строка.hidden = true; к.style.order = ""; return; }
+    if (!обмер) {                      // такой мерки у вещи нет — уходит вниз
+      строка.hidden = false;
+      строка.textContent = мерка === "fg" ? "замер груди не указан" : "замер пояса не указан";
+      к.style.order = 999;
+      к.classList.add("dim");
+      return;
+    }
+    const д = обмер - мой;
+    строка.hidden = false;
+    if (д === 0) { строка.textContent = "ровно ваш замер"; строка.classList.add("exact"); }
+    else строка.textContent = д > 0 ? `на ${д}\u00a0см шире вашего`
+                                    : `на ${-д}\u00a0см уже вашего`;
+    к.style.order = Math.abs(д);       // ближайшие по обмеру поднимаются выше
+  });
+  заметка.textContent = мой
+    ? `Сначала самые близкие к ${мой}\u00a0см по ${мерка === "fg" ? "груди" : "поясу"}`
+    : "Половина обхвата, как меряет продавец";
+  ПУСТО.hidden = видно > 0;
+}
+
+document.querySelectorAll(".switch button").forEach(к => к.addEventListener("click", () => {
+  мерка = к.dataset.m;
+  document.querySelectorAll(".switch button").forEach(д =>
+    д.setAttribute("aria-pressed", String(д.dataset.m === мерка)));
+  показать();
+}));
+
+поиск.addEventListener("input", показать);
+подбор.addEventListener("input", показать);
+document.querySelectorAll(".mark").forEach(к => к.addEventListener("click", () => {
+  бренд = к.dataset.br === бренд ? "" : к.dataset.br;
+  document.querySelectorAll(".mark").forEach(д =>
+    д.setAttribute("aria-pressed", String(д.dataset.br === бренд)));
+  показать();
+}));
+document.querySelectorAll(".reset").forEach(к => к.addEventListener("click", () => {
+  поиск.value = ""; подбор.value = ""; бренд = ""; мерка = "fg";
+  document.querySelectorAll(".switch button").forEach(д =>
+    д.setAttribute("aria-pressed", String(д.dataset.m === "fg")));
+  document.querySelectorAll(".mark").forEach(д => д.setAttribute("aria-pressed", "false"));
+  показать();
+}));
+
+/* ── карточка товара ─────────────────────────────────────────────── */
+let откуда = 0;
+
+function кадр(вещь, i){
+  const большое = document.getElementById("dmain");
+  const свой = (вещь.px || [])[i] || 864;
+  document.querySelector(".gal__main").classList.toggle("small", свой < 864);
+  большое.style.maxWidth = свой < 864 ? свой + "px" : "";
+  большое.src = вещь.ph[i];
+  document.getElementById("dmain").alt = вещь.n + ", фото " + (i + 1);
+  document.querySelectorAll("#drow .gal__t").forEach((к, j) =>
+    к.setAttribute("aria-pressed", String(i === j)));
+}
+
+function открыть(id){
+  const вещь = G.find(g => String(g.id) === String(id));
+  if (!вещь) return;
+  откуда = window.scrollY;
+  document.getElementById("dh").textContent = вещь.n;
+  document.getElementById("dp").textContent = деньги(вещь.p);
+  const обмеры = document.getElementById("dmwrap");
+  document.getElementById("dm").innerHTML = вещь.m
+    .map(([к, v]) => `${к} — ${v}\u00a0см`).join("<br>");
+  обмеры.hidden = !вещь.m.length;
+  document.getElementById("dtext").textContent = вещь.d;
+  document.getElementById("dorig").href = вещь.u;
+  const ряд = document.getElementById("drow");
+  ряд.innerHTML = "";
+  вещь.ph.forEach((п, i) => {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "gal__t";
+    b.setAttribute("aria-label", "Фото " + (i + 1));
+    b.innerHTML = `<img src="${п}" alt="">`;
+    b.addEventListener("click", () => кадр(вещь, i));
+    ряд.appendChild(b);
+  });
+  ряд.hidden = вещь.ph.length < 2;
+  кадр(вещь, 0);
+  каталог.hidden = true;
+  деталь.hidden = false;
+  window.scrollTo(0, 0);
+  document.getElementById("back").focus();
+  history.pushState({id}, "", "#t" + id);
+}
+
+function закрыть(){
+  деталь.hidden = true;
+  каталог.hidden = false;
+  window.scrollTo(0, откуда);
+}
+
+карточки.forEach(к => к.addEventListener("click", e => {
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.button) return;   // открыть в новой вкладке
+  e.preventDefault();
+  открыть(к.dataset.id);
+}));
+document.getElementById("back").addEventListener("click", () => { history.back(); });
+addEventListener("popstate", e => { e.state && e.state.id ? открыть(e.state.id) : закрыть(); });
+addEventListener("keydown", e => {
+  if (e.key === "Escape" && !деталь.hidden) history.back();
+});
+if (location.hash.startsWith("#t")) открыть(location.hash.slice(2));
+
+/* ── появление при прокрутке ─────────────────────────────────────── */
+const появиться = э => э.classList.add("seen");
+if ("IntersectionObserver" in window) {
+  const глаз = new IntersectionObserver((записи, сам) => {
+    записи.forEach((з, i) => {
+      if (!з.isIntersecting) return;
+      setTimeout(() => появиться(з.target), i * 70);
+      сам.unobserve(з.target);
+    });
+  }, {rootMargin: "240px 0px 240px 0px"});
+  document.querySelectorAll(".rise").forEach(э => глаз.observe(э));
+  // страховка: если до элемента так и не дошла очередь, он всё равно должен быть виден
+  setTimeout(() => document.querySelectorAll(".rise").forEach(появиться), 3000);
+} else {
+  document.querySelectorAll(".rise").forEach(появиться);
+}
+</script>
+</body>
+</html>
